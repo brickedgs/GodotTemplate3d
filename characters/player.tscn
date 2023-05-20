@@ -15,7 +15,7 @@ script = ExtResource("1_coelk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="SpringArmPivot"]
-spring_length = 0.0
+spring_length = 2.0
 script = ExtResource("2_o1ykh")
 
 [node name="Camera3D" type="Camera3D" parent="SpringArmPivot/SpringArm3D"]

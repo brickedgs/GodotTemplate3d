@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://p744hj8krrov"]
+
+[ext_resource type="Script" path="res://characters/player.gd" id="1_coelk"]
+[ext_resource type="Script" path="res://characters/spring_arm.gd" id="2_o1ykh"]
+[ext_resource type="Script" path="res://characters/camera.gd" id="2_ws1gh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8x2is"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_om175"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_coelk")
+
+[node name="SpringArmPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="SpringArmPivot"]
+spring_length = 0.0
+script = ExtResource("2_o1ykh")
+
+[node name="Camera3D" type="Camera3D" parent="SpringArmPivot/SpringArm3D"]
+script = ExtResource("2_ws1gh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_8x2is")
+
+[node name="CharacterManager" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_om175")
+skeleton = NodePath("../..")
